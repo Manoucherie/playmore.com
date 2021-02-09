@@ -1,0 +1,394 @@
+/*
+ Theme Name:   FIM THEME
+ Theme URI:    http://example.com/
+ Description:  This theme is designed for DIMI exercice
+ Author:       The FIM Team
+ Author URI:   https://fim.fr
+ Version:      1.1
+ Requires PHP: 5.6
+ License:      GNU General Public License v2 or later
+ License URI:  http://www.gnu.org/licenses/gpl-2.0.html
+ Tags:        wordpress, dev
+ Text Domain:  fimtheme
+*/
+/*======================================
+//--//-->   PERSONAL STYLE
+======================================*/
+/* NAVBAR
+-------------------------------------------------- */
+@media (max-width: 992px) {
+	.navbar-nav .nav-link {
+    padding-left: 0.5rem;
+	}
+}
+.menu-item {
+    margin-right: 1.5rem;
+}
+
+/* TAXO LINK
+-------------------------------------------------- */
+.product a:hover {
+	color: #000;
+	text-decoration: none;
+	font-weight: 600;
+}
+
+/* CAROUSEL
+-------------------------------------------------- */
+/* Carousel base class */
+.carousel {
+  margin-bottom: 4rem;
+}
+/* Since positioning the image, we need to help out the caption */
+.carousel-caption {
+  bottom: 18rem;
+  z-index: 10;
+}
+
+/* Declare heights because of positioning of img element */
+.carousel-item {
+  height: 40rem;
+  overflow: hidden;
+}
+.carousel-item > img {
+  position: absolute;
+  top: -25%;
+  left: 0;
+  min-width: 100%;
+  height: auto;
+}
+.carousel-item > a {
+  position: absolute;
+  top: -25%;
+  left: 0;
+  min-width: 100%;
+  height: auto;
+}
+
+/* CARD
+-------------------------------------------------- */
+.myitems a {
+	color: #212529;
+}
+.myitems a:hover {
+	color: #74787b;
+	text-decoration: none;
+}	
+
+/* IMG + H1
+-------------------------------------------------- */
+.submenu {
+	height: 250px;
+	background-image: linear-gradient(120deg, #ffc107 0%, #d57eeb 100%);
+}
+.submenu h1 {
+	height:250px;
+	line-height:250px; /* centrage vertical */
+}
+
+/* Btn promo
+-------------------------------------------------- */
+.btnsize {
+    font-size: 3rem;
+}
+
+/* SIDEBAR
+-------------------------------------------------- */
+.product {
+	font-size: 1rem;
+}
+.product i {
+	margin: 20px 50px 20px 20px;
+}
+.widget-sidebar a:hover {
+	color: #606060;
+	text-decoration: none;
+}
+
+/* TIPS
+-------------------------------------------------- */
+
+
+/* VIDEO
+-------------------------------------------------- */
+video {
+	position: relative;
+	top: 6px;
+}
+
+/* CONTACT FORM
+-------------------------------------------------- */
+.mycontact input[type=checkbox] {
+	margin-left: 0;
+}
+.mycontact label{
+	margin-left: 1rem;
+}
+
+/* FOOTER
+-------------------------------------------------- */
+footer {
+	padding-top: 3rem;
+	padding-bottom: 3rem;
+}
+
+footer p {
+  margin-bottom: .25rem;
+  display: inline;
+}
+footer a,
+a:focus,
+a:hover {
+	color: #fff;
+}
+.bg-my {
+  background-color: #2e2e2e;
+}
+
+/* FOOTER MENU
+-------------------------------------------------- */
+.footernavmenu{
+  display: inline;
+  list-style-type: none;
+  margin: 0 0 0 10px;
+  padding: 0;
+}
+.footernavmenu li {
+  display: inline;
+}
+.footernavmenu li a {
+  text-align: left;
+  padding-left: 16px;
+  text-decoration: none;
+  color: #a8a8aa;
+}
+
+.footernavmenu li a:hover {
+  color: #fff;
+}
+
+/* 404
+-------------------------------------------------- */
+.error-box {
+  top: 35%;
+  right: 8%;
+}
+.error-box h1 {
+  margin-bottom: 50px;
+}
+@media (max-width: 767.98px) {
+  .error-box {
+	top: 25%;
+	right: 0%;
+	background-color: rgba(0, 0, 0, 0.5);
+  }
+  .error-box h1 {
+	margin-bottom: 0px;
+  }
+  .error-box p {
+	display: none;
+  }
+  .error-box form {
+	display: none;
+  }
+}
+
+/* PAGINATION
+-------------------------------------------------- */
+.paginate .page-numbers {
+	position: relative;
+	display: inline-block;
+	padding: .5rem .75rem;
+	margin: -3px;
+	line-height: 1.25;
+	color: #007bff;
+	background-color: #fff;
+	border: 1px solid #dee2e6;
+}
+ 
+.paginate .page-numbers:hover {
+	z-index: 2;
+	color: #0056b3;
+	text-decoration: none;
+	background-color: #e9ecef;
+	border-color: #dee2e6;
+}
+ 
+.paginate .current {
+	z-index: 3;
+	color: #fff;
+	background-color: #007bff;
+	border-color: #007bff;
+}
+/* ZOOM PRODUCT IMG
+-------------------------------------------------- */
+.img-hover-zoom {
+  height: 200px; /* [1.1] Set it as per your need */
+  width: 350px;
+  overflow: hidden; /* [1.2] Hide the overflowing of child elements */
+}
+
+/* [2] Transition property for smooth transformation of images */
+.img-hover-zoom img {
+  transition: transform .5s ease;
+}
+
+/* [3] Finally, transforming the image when container gets hovered */
+.img-hover-zoom:hover img {
+  transform: scale(1.2);
+}
+
+/* CONTACT FORM
+-------------------------------------------------- */
+#sendmessage {
+  color: #0078ff;
+  border: 1px solid #0078ff;
+  display: none;
+  text-align: center;
+  padding: 15px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+#errormessage {
+  color: red;
+  display: none;
+  border: 1px solid red;
+  text-align: center;
+  padding: 15px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+#sendmessage.show,
+#errormessage.show,
+.show {
+  display: block;
+}
+
+.validation {
+  color: red;
+  display: none;
+  margin: 0 0 20px;
+  font-weight: 400;
+  font-size: 13px;
+}
+
+/* STATISTIQUE GAUGE
+-------------------------------------------------- */
+.GaugeMeter{
+	Position:        Relative;
+	Text-Align:      Center;
+	Overflow:        Hidden;
+	Cursor:          Default;
+}
+
+.GaugeMeter SPAN,
+.GaugeMeter B{
+	Margin:          -5% 23%;
+	Width:           54%;
+	Position:        Absolute;
+	Text-align:      Center;
+	Display:         Inline-Block;
+	Color:           RGBa(0,0,0,.8);
+	Font-Weight:     100;
+	Font-Family:     "Open Sans", Arial;
+	Overflow:        Hidden;
+	White-Space:     NoWrap;
+	Text-Overflow:   Ellipsis;
+}
+.GaugeMeter[data-style="Semi"] B{
+	Margin:          0 10%;
+	Width:           80%;
+}
+
+.GaugeMeter[data-label] {
+	Font-Size:       4em;
+}
+
+.GaugeMeter S,
+.GaugeMeter U{
+	Text-Decoration: None;
+	Font-Size:       .5em;
+	Opacity:         .5;
+}
+
+.GaugeMeter B{
+	Color:           Black;
+	Font-Weight:     300;
+	Font-Size:       .5em;
+	Opacity:         .8;
+}
+
+/* SOCIAL SHARE
+-------------------------------------------------- */
+.social-bloc{
+	display: block;
+}
+.social-share {
+    margin: 0;
+    float: right;
+    overflow: hidden;
+}
+.social-share li {
+    margin-right: 15px;
+    display: inline-block;
+    list-style: none;
+}
+.social-share li>div a {
+    color: #999;
+    width: 30px;
+    height: 30px;
+    border: 1px solid #999;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 18px;
+    cursor: pointer;
+}
+.social-share li>div a{
+    line-height: 28px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.social-share li>div.facebook-social a:hover {
+    border-color: #3b5998;
+    background-color: #3b5998;
+	color: white;
+}
+.social-share li>div.twitter-social a:hover {
+    border-color: #00aced;
+    background-color: #00aced;
+	color: white;
+}
+.social-share li>div.pinterest-social a:hover {
+    border-color: #cb2027;
+    background-color: #cb2027;
+	color: white;
+}
+.social-share li>div.linkedin-social a:hover {
+    border-color: #0077b5;
+    background-color: #0077b5;
+	color: white;
+}
+.social-share li>div.email-social a:hover {
+    border-color: #b116a8;
+    background-color: #b116a8;
+	color: white;
+}
+
+/* MENTION PAGE
+-------------------------------------------------- */
+.list-ico {
+	list-style: none;
+	padding-left: 0;
+	margin-bottom: 50px;
+}
+
+/* .list-ico {
+	line-height: 2;
+} */
+
+.list-ico span {
+	color: #0078ff;
+	margin: 0 20px 0 50px;
+}
