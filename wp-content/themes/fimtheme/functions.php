@@ -158,3 +158,9 @@ function custom_excerpt_length( $length ) {
     }
 }
 add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
+function register_navwalker() {
+	require_once get_template_directory() . "/classes/class-wp-bootstrap-navwalker.php";
+}
+add_action('after_setup_theme', 'register_navwalker');
+
+remove_filter('term_desciption', 'wpautop');

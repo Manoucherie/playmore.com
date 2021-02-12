@@ -9,30 +9,30 @@
                     aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarText">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item mr-4 active">
-                            <a class="nav-link" href="#">Accueil<span class="sr-only">(current)</span></a>
-                        </li>
-						<li class="nav-item mr-4 dropdown">
-							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							  Nos consoles
-							</a>
-							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-							  <a class="dropdown-item" href="cat-produits.html">Playstation</a>
-							  <a class="dropdown-item" href="cat-produits.html">Xbox</a>
-							  <a class="dropdown-item" href="cat-produits.html">Nintendo</a>
-							  <a class="dropdown-item" href="cat-produits.html">Autres</a>
-							</div>
-						</li>
-                        <li class="nav-item mr-4">
-                            <a class="nav-link" href="#">Astuces</a>
-                        </li>
-						<li class="nav-item mr-4">
-                            <a class="nav-link" href="category.html">Contact</a>
-                        </li>
-                    </ul>
-                </div>
+                <?php
+                if (has_nav_menu( 'menu-1' )){
+	                wp_nav_menu( array(
+		                'menu'					=> 'menu-1',
+		                'theme_location'		=> 'menu-1',
+		                'container'				=> 'div',
+		                'container_class'      => 'collapse navbar-collapse',
+		                'container_id'         => 'navbarText',
+		                'menu_class'           => 'navbar-nav ml-auto',
+		                'menu_id'              => '',
+		                'echo'                 => true,
+		                'before'               => '',
+		                'after'                => '',
+		                'link_before'          => '',
+		                'link_after'           => '',
+		                //'items_wrap'           => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+		                'depth'                => 2,
+		                'walker'               => new WP_Bootstrap_Navwalker(),
+		                'fallback_cb'          => 'WP_Boostrap_Navwalker::fallback'
+	                ));
+                } else {
+	                echo 'Veuillez assigner un menu dans l\'administration WordPress -> Apparence -> Menus -> Gérer les emplacements';
+                }
+                ?>
             </div>
         </nav>
     </header>

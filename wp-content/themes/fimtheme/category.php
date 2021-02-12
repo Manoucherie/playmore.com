@@ -7,10 +7,13 @@
  * @since 1.0.0
  */
 get_header();
+
+$category = get_category(get_query_var('cat'));
+$cat_id = $category->cat_ID;
 ?>
     <!-- SUBMENU H1 -->
 	<div class="container-fluid p-0 mt-4 text-center submenu">
-		<h1>ARTICLES</h1>
+		<h1><?php echo get_cat_name($category_id = $cat_id); ?></h1>
 	</div>
 	<!-- IMG + H1 END -->
 	
@@ -44,26 +47,17 @@ get_header();
         </div>
 		
 		<div class="row justify-content-center my-4">
-			<nav aria-label="Page navigation example">
-			  <ul class="pagination">
-				<li class="page-item">
-				  <a class="page-link" href="#" aria-label="Previous">
-					<span aria-hidden="true">&laquo;</span>
-				  </a>
-				</li>
-				<li class="page-item"><a class="page-link" href="#">1</a></li>
-				<li class="page-item"><a class="page-link" href="#">2</a></li>
-				<li class="page-item"><a class="page-link" href="#">3</a></li>
-				<li class="page-item">
-				  <a class="page-link" href="#" aria-label="Next">
-					<span aria-hidden="true">&raquo;</span>
-				  </a>
-				</li>
-			  </ul>
+			<nav class="paginate">
+                <?php
+                    the_posts_pagination(array(
+                        'prev_text'=>__('&laquo', 'fimtheme'),
+                        'next_text'=>__('&raquo', 'fimtheme'),
+                        'screen_reader_text'=>__(' ', 'fimtheme'),
+                    ));
+                ?>
 			</nav>
 		</div>
 
-		
     </div>
 	<!-- PAGE CONTENT END -->>
 <?php
