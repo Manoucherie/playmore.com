@@ -2,7 +2,7 @@
     <header>
         <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
             <div class="container justify-content-between">
-                <a class="navbar-brand" href="<?php echo get_home_url(); ?>">
+                <a class="navbar-brand" href="<?php bloginfo( 'url' ); ?>">
                     PlayMore
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
@@ -12,7 +12,7 @@
                 <div class="collapse navbar-collapse" id="navbarText">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item mr-4 active">
-                            <a class="nav-link" href="<?php echo get_home_url(); ?>">Accueil<span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="#">Accueil<span class="sr-only">(current)</span></a>
                         </li>
 						<li class="nav-item mr-4 dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

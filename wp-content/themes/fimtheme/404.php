@@ -15,10 +15,9 @@ get_header();
 
 			<div class="col col-md-5 position-absolute align-self-end text-white error-box">
 				<h1 class="page-title text-center">Oops 404 ! Cette page n'a pas été trouvé</h1>
-
-
+				
 				<p>Essayez une autre recherche...</p>
-                <?php echo get_search_form(); ?>
+				<?php get_search_form(); ?>
 			</div>
 
     </div>

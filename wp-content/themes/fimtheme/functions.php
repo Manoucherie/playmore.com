@@ -55,9 +55,10 @@ function fim_theme_style() {
     wp_enqueue_style( 'bootstrap-css' );
    
     // fontawesome CSS STYLE
-	if (is_single()) {
-		wp_enqueue_style( 'fontawesome-css', get_template_directory_uri() . '/assets/css/fontawesome.min.css', false, '5', 'all' );
-	}
+    if ( is_single() ){
+        wp_register_style( 'fontawesome-css', get_template_directory_uri() . '/assets/css/fontawesome.min.css', false, '5', 'all' );
+        wp_enqueue_style( 'fontawesome-css' );
+    }
 
     // DEFAULT WP CSS STYLE
     wp_enqueue_style( 'style', get_stylesheet_uri() );
@@ -94,19 +95,17 @@ function fim_widgets_init() {
 add_action( 'widgets_init', 'fim_widgets_init' );
 
 
-//
+// Limite title lenght
 function max_title_length( $title ) {
-	if (!is_search() ) {
-		$max = 55;
-		if ( strlen( $title ) > $max ) {
-			return substr( $title, 0, $max ) . " &hellip;";
-		} else {
-			return $title;
-		}
-	} else {
-		return $title;
-	}
-}
+    $max = 55;
+    if( strlen( $title ) > $max && is_single() || is_page() ) {
+        return substr( $title, 0, $max ). " &hellip;";
+    } elseif ( strlen( $title ) > 45 && is_home() ) {
+        return substr( $title, 0, 45 ). " &hellip;";
+    } else {
+        return $title;
+    }
+    }
 add_filter( 'the_title', 'max_title_length');
 
 // Remove admin bar in front
@@ -124,25 +123,6 @@ function disable_emojis() {
    }
    add_action( 'init', 'disable_emojis' );
 
-function login_logout_link_in_menu( $items, $args  ) {
-	if( $args->theme_location == 'footer' && ! is_user_logged_in() ) {
-		$loginoutlink = wp_loginout( 'wp-admin', false );
-		$items .= '<li class="menu-item">'. $loginoutlink .'</li>';
-		return $items;
-	} else if( $args->theme_location == 'footer' && is_user_logged_in() ) {
-		$loginoutlink = wp_loginout( 'index.php', false );
-		$adminlink = '<a href="'.admin_url().'">Admin</a>';
-		$items .= '<li class="menu-item">'. $adminlink .'</li>';
-		$items .= '<li class="menu-item">'. $loginoutlink .'</li>';
-		return $items;
-	}
-	return $items;
-}
-add_filter( 'wp_nav_menu_items', 'login_logout_link_in_menu', 10, 2 );
-function wpdocs_custom_excerpt_length( $length ) {
-	return 20;
-}
-add_filter( 'excerpt_length', 'wpdocs_custom_excerpt_length', 999 );
 // Disable Gutenberg on specific pages
 function disable_gutenberg ($is_enabled) {
     global $post;
@@ -152,3 +132,29 @@ function disable_gutenberg ($is_enabled) {
 }
 add_filter( 'use_block_editor_for_post_type', 'disable_gutenberg', 10, 2 );
 
+// Login/logout in menu
+function login_logout_link_in_menu( $items, $args  ) {
+    if( $args->theme_location == 'footer' && ! is_user_logged_in() ) {
+        $loginoutlink = wp_loginout( 'wp-admin', false );
+        $items .= '<li class="menu-item">'. $loginoutlink .'</li>';
+        return $items;
+    } else if( $args->theme_location == 'footer' && is_user_logged_in() ) {
+        $loginoutlink = wp_loginout( 'index.php', false );
+        $adminlink = '<a href="'. admin_url() .'">admin</a>';
+        $items .= '<li class="menu-item">'. $adminlink .'</li>';
+        $items .= '<li class="menu-item">'. $loginoutlink .'</li>';
+        return $items;
+    }
+    return $items;
+}
+add_filter( 'wp_nav_menu_items', 'login_logout_link_in_menu', 10, 2 );
+
+// Custom excerpt lenght
+function custom_excerpt_length( $length ) {
+    if ( is_home() ){
+        return 18;
+    } else {
+        return 55;
+    }
+}
+add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
