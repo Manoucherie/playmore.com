@@ -96,7 +96,7 @@ add_action( 'widgets_init', 'fim_widgets_init' );
 
 
 // Limite title lenght
-function max_title_length( $title ) {
+/* function max_title_length( $title ) {
     $max = 55;
     if( strlen( $title ) > $max && is_single() || is_page() ) {
         return substr( $title, 0, $max ). " &hellip;";
@@ -106,7 +106,7 @@ function max_title_length( $title ) {
         return $title;
     }
     }
-add_filter( 'the_title', 'max_title_length');
+add_filter( 'the_title', 'max_title_length'); */
 
 // Remove admin bar in front
 add_filter('show_admin_bar', '__return_false');
@@ -158,11 +158,16 @@ function custom_excerpt_length( $length ) {
     }
 }
 add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
-function register_navwalker() {
-	require_once get_template_directory() . "/classes/class-wp-bootstrap-navwalker.php";
+
+
+// ADD BOOTSTRAP WALKER
+function register_navwalker(){
+    require_once get_template_directory() . '/classes/class-wp-bootstrap-navwalker.php';
 }
-add_action('after_setup_theme', 'register_navwalker');
+add_action( 'after_setup_theme', 'register_navwalker' );
 
-remove_filter('term_desciption', 'wpautop');
+// Remove p tags from category description
+remove_filter('term_description','wpautop');
 
-require get_template_directory().'/inc/cpt-produits.php';
+// ADD CPT PRODUITS
+require get_template_directory() . '/inc/cpt-produits.php';

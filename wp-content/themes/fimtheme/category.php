@@ -8,12 +8,14 @@
  */
 get_header();
 
-$category = get_category(get_query_var('cat'));
+// Retrieve current Category ID
+$category = get_category( get_query_var( 'cat' ) );
 $cat_id = $category->cat_ID;
+
 ?>
     <!-- SUBMENU H1 -->
 	<div class="container-fluid p-0 mt-4 text-center submenu">
-		<h1><?php echo get_cat_name($category_id = $cat_id); ?></h1>
+		<h1><?php echo get_cat_name( $category_id = $cat_id ); ?></h1>
 	</div>
 	<!-- IMG + H1 END -->
 	
@@ -41,25 +43,59 @@ $cat_id = $category->cat_ID;
             </div>
         <?php endwhile; else:
             echo '<p>Aucun contenu à afficher !</p>';
-        endif;
+		endif;
         ?> 
 
         </div>
-		
+
+		<!-- PAGINATION -->
 		<div class="row justify-content-center my-4">
-			<nav class="paginate">
-                <?php
-                    the_posts_pagination(array(
-                        'prev_text'=>__('&laquo', 'fimtheme'),
-                        'next_text'=>__('&raquo', 'fimtheme'),
-                        'screen_reader_text'=>__(' ', 'fimtheme'),
-                    ));
-                ?>
+			<nav aria-label="Page navigation example">
+			  <ul class="pagination">
+				<li class="page-item">
+				  <a class="page-link" href="#" aria-label="Previous">
+					<span aria-hidden="true">&laquo;</span>
+				  </a>
+				</li>
+				<li class="page-item"><a class="page-link" href="#">1</a></li>
+				<li class="page-item"><a class="page-link" href="#">2</a></li>
+				<li class="page-item"><a class="page-link" href="#">3</a></li>
+				<li class="page-item">
+				  <a class="page-link" href="#" aria-label="Next">
+					<span aria-hidden="true">&raquo;</span>
+				  </a>
+				</li>
+			  </ul>
 			</nav>
 		</div>
+		<!-- PAGINATION END -->
 
+		<?php
+		// Menu v1 avec H2
+		the_posts_pagination( array(
+			'prev_text' 			=> __( '&laquo', 'fimtheme' ),
+			'next_text' 			=> __( '&raquo', 'fimtheme' ),
+			//'screen_reader_text' 	=> __( ' ', 'fimtheme' ),
+		) );
+
+		// Menu v2 sans style et sans H2
+		echo paginate_links();
+		?>
+		<!-- PAGINATION DYNAMIQUE -->
+		<div class="row justify-content-center my-4">
+			<nav class="paginate">
+			<?php
+				echo paginate_links( array (
+					'prev_text' 			=> __( '&laquo', 'fimtheme' ),
+					'next_text' 			=> __( '&raquo', 'fimtheme' )
+				) );
+			?>
+			</nav>
+		</div>
+		<!-- PAGINATION END -->		
+		
     </div>
-	<!-- PAGE CONTENT END -->>
+	<!-- PAGE CONTENT END -->
 <?php
     get_template_part('template-parts/content-banner');
 get_footer();
