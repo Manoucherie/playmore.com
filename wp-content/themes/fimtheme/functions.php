@@ -55,7 +55,7 @@ function fim_theme_style() {
     wp_enqueue_style( 'bootstrap-css' );
    
     // fontawesome CSS STYLE
-    if ( is_single() ){
+    if ( is_single()){
         wp_register_style( 'fontawesome-css', get_template_directory_uri() . '/assets/css/fontawesome.min.css', false, '5', 'all' );
         wp_enqueue_style( 'fontawesome-css' );
     }
@@ -67,7 +67,10 @@ add_action( 'wp_enqueue_scripts', 'fim_theme_style' );
 
 // LOAD JS
 function fim_theme_script() { 
-    // JQUERY SCRIPT
+    // DEREGISTER WP JQUERY SCRIPT
+    wp_deregister_script ( 'jquery' );
+    
+    // MY JQUERY SCRIPT
     wp_register_script( 'jquery-js', get_template_directory_uri() . '/assets/js/jquery-3.5.1.slim.min.js', false, '3.5.1', true );
     wp_enqueue_script( 'jquery-js' );
 
@@ -136,7 +139,8 @@ add_filter( 'use_block_editor_for_post_type', 'disable_gutenberg', 10, 2 );
 function login_logout_link_in_menu( $items, $args  ) {
     if( $args->theme_location == 'footer' && ! is_user_logged_in() ) {
         $loginoutlink = wp_loginout( 'wp-admin', false );
-        $items .= '<li class="menu-item">'. $loginoutlink .'</li>';
+        //$items .= '<li class="menu-item">'. $loginoutlink .'</li>';
+        $items .= '<li class="menu-item"><a href="'. home_url() .'/connexion"> Connexion </a></li>';
         return $items;
     } else if( $args->theme_location == 'footer' && is_user_logged_in() ) {
         $loginoutlink = wp_loginout( 'index.php', false );
@@ -159,6 +163,32 @@ function custom_excerpt_length( $length ) {
 }
 add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
 
+// Remove CF7 CSS
+function remove_cf7_css(){
+    if (function_exists('wpcf7_enqueue_styles') ){
+        if ( !is_page( 'contact' )){
+            wp_deregister_style( 'contact-form-7' );
+        }
+    }
+}
+add_action( 'wp_print_styles', 'remove_cf7_css', 100 );
+
+// Remove CF7 JS
+function remove_cf7_js(){
+    if (function_exists('wpcf7_enqueue_styles') ){
+        if ( !is_page( 'contact' )){
+            wp_deregister_script( 'contact-form-7' );
+        }
+    }
+}
+add_action( 'wp_print_scripts', 'remove_cf7_js', 100 );
+
+// Custom Login
+function my_custom_login(){
+    echo '<link rel="stylesheet" type="text/css" href="'. get_bloginfo('stylesheet_directory') .'/assets/css/login.css" />';
+}
+add_action( 'login_head', 'my_custom_login' );
+
 
 // ADD BOOTSTRAP WALKER
 function register_navwalker(){
@@ -171,3 +201,9 @@ remove_filter('term_description','wpautop');
 
 // ADD CPT PRODUITS
 require get_template_directory() . '/inc/cpt-produits.php';
+
+// ADD METABOX VERSION
+require get_template_directory() . '/inc/cf-version.php';
+
+// ADD METABOX YOUTUBE
+require get_template_directory() . '/inc/cf-url.php';

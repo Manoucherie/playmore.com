@@ -21,51 +21,50 @@ get_header();
 
             <?php
             $terms = get_terms( 'marque', array (
-                'order'                 => 'ASC',
-                'hide_empty'            => true,
-            ));          
+				'order'             => 'ASC',
+                'hide_empty'           => true
+            ) );
 
-            if ( ! empty ( $terms ) && ! is_wp_error( $terms ) ){
-                echo '<a href="'. site_url( '/produits') .'" class="btn btn-outline-primary mr-2" role="button" aria-pressed="true">Tout</a>';
-
-				foreach ( $terms as $term ){
-                echo '<a href="'. esc_url( get_term_link( $term ) ) .'" class="btn btn-outline-primary mr-2" role="button" aria-pressed="true">'. $term->name.'</a>';
+            if ( ! empty ( $terms ) && ! is_wp_error( $terms ) ) {
+                echo '<a href="'. site_url( '/produits' ) .'" class="btn btn-outline-primary mr-1" role="button" aria-pressed="true">Tout</a>';
+                foreach ( $terms as $term ) {
+                    echo '<a href="'. esc_url ( get_term_link( $term ) ) .'" class="btn btn-outline-primary mr-1" role="button" aria-pressed="true">'. $term->name .'</a>';
                 }
-            } 
-            
-            
+            }
             ?>
+
 			</div>
 		</div>
         <div class="row justify-content-md-center">
 
-        <?php
-            $argsitem = array (
-                'post_type'		        => 'produits',
-                'post_status'		    => 'publish',
-                'posts_per_page'		=> -1,
-            );
+        <?php 
+			$argsitem = array (
+				'post_type'             => 'produits',
+                'post_status'           => 'publish',
+				'posts_per_page'		=> -1
+			);
 
-            $allitem = new WP_Query( $argsitem );
+			$allitem = new WP_Query( $argsitem );
 
-            if ( $allitem->have_posts() ) : while ( $allitem->have_posts() ) : $allitem->the_post();
-            ?>
+			if ( $allitem->have_posts() ) : while ( $allitem->have_posts() ) : $allitem->the_post();
+			?>
+
 			<div class="col-md-4 mb-5 img-hover-zoom">
 				<a href="<?php the_permalink(); ?>">
-                   <?php the_post_thumbnail( 'custom-thumb', ['class' => 'card-img'] ); ?>
+                   <?php the_post_thumbnail( 'custom-thumb', ['class' => 'card-img'] ); ?> 
                 </a>
 			</div>
 
-            <?php    endwhile; else:
+            <?php
+                endwhile; else:
                     echo '<p>Aucun contenu à afficher !</p>';
 				endif;
 				wp_reset_postdata();
             ?>
-			
+
         </div>
     </div>
 	<!-- PAGE CONTENT END -->
-   
 <?php
     get_template_part('template-parts/content-banner');
 get_footer();

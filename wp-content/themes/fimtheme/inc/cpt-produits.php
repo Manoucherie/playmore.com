@@ -45,7 +45,7 @@ if ( ! function_exists('item_cpt') ) :
             'description'           => __( 'Permet de déposer des produits', 'fimtheme' ),
             'labels'                => $labels,
             'supports'              => array ( 'title', 'editor', 'revisions', 'author', 'excerpt', 'thumbnail', 'custom-fields'),
-            'taxonomies'            => array( 'marque', 'annees', 'garantie','prix' ),
+            'taxonomies'            => array( 'marque', 'annees', 'garantie', 'prix' ),
             'hierarchical'          => false,
             'public'                => true,
             'show_ui'               => true,
@@ -70,19 +70,19 @@ if ( ! function_exists('item_cpt') ) :
 endif;
 
 // Register Custom Taxonomy
-if (! function_exists('item_taxonomy') ) :
+if ( ! function_exists('item_taxonomy') ) :
 function item_taxonomy() {
 
-    // Register Taxonomy Marque
+    // Register Taxonomy Marques
 	$labels_mark = array(
 		'name'                       => _x( 'Marque', 'Taxonomy General Name', 'fimtheme' ),
-		'singular_name'              => _x( 'Marque', 'Taxonomy Singular Name', 'fimtheme' ),
+		'singular_name'              => _x( 'marque', 'Taxonomy Singular Name', 'fimtheme' ),
 		'menu_name'                  => __( 'Marque', 'fimtheme' ),
 		'all_items'                  => __( 'All Items', 'fimtheme' ),
 		'parent_item'                => __( 'Parent Item', 'fimtheme' ),
 		'parent_item_colon'          => __( 'Parent Item:', 'fimtheme' ),
-		'new_item_name'              => __( 'Ajouter une marque', 'fimtheme' ),
-		'add_new_item'               => __( 'Add New Item', 'fimtheme' ),
+		'new_item_name'              => __( 'New Item Name', 'fimtheme' ),
+		'add_new_item'               => __( 'Ajouter une marque', 'fimtheme' ),
 		'edit_item'                  => __( 'Edit Item', 'fimtheme' ),
 		'update_item'                => __( 'Update Item', 'fimtheme' ),
 		'view_item'                  => __( 'View Item', 'fimtheme' ),
@@ -100,13 +100,13 @@ function item_taxonomy() {
 		'labels'                     => $labels_mark,
 		'hierarchical'               => false,
 		'public'                     => true,
-		'show_in_rest'               => true,
-        'shop_ui'                    => true,
+        'show_in_rest'               => true,
+		'show_ui'                    => true,
 		'show_admin_column'          => true,
 		'show_in_nav_menus'          => true,
 		'show_tagcloud'              => true,
-		'query_var'                  => true,
-		'rewrite'                    => array('slug'=> 'marque'),
+        'query_var'                  => true,
+        'rewrite'                    => array( 'slug' => 'marque' ),
 	);
 	register_taxonomy( 'marque', array( 'produits' ), $args_mark );
 
@@ -137,20 +137,20 @@ function item_taxonomy() {
 		'labels'                     => $labels_annee,
 		'hierarchical'               => false,
 		'public'                     => true,
-		'show_in_rest'               => true,
-        'shop_ui'                    => true,
+        'show_in_rest'               => true,
+		'show_ui'                    => true,
 		'show_admin_column'          => true,
 		'show_in_nav_menus'          => true,
 		'show_tagcloud'              => true,
-		'query_var'                  => true,
-		'rewrite'                    => array('slug'=> 'annees'),
+        'query_var'                  => true,
+        'rewrite'                    => array( 'slug' => 'annees' ),
 	);
 	register_taxonomy( 'annees', array( 'produits' ), $args_annee );
 
-    // Register Taxonomy Garentie
+    // Register Taxonomy Garantie
 	$labels_warranty = array(
 		'name'                       => _x( 'Garantie', 'Taxonomy General Name', 'fimtheme' ),
-		'singular_name'              => _x( 'Garantie', 'Taxonomy Singular Name', 'fimtheme' ),
+		'singular_name'              => _x( 'garantie', 'Taxonomy Singular Name', 'fimtheme' ),
 		'menu_name'                  => __( 'Garantie', 'fimtheme' ),
 		'all_items'                  => __( 'All Items', 'fimtheme' ),
 		'parent_item'                => __( 'Parent Item', 'fimtheme' ),
@@ -174,20 +174,20 @@ function item_taxonomy() {
 		'labels'                     => $labels_warranty,
 		'hierarchical'               => false,
 		'public'                     => true,
-		'show_in_rest'               => true,
-        'shop_ui'                    => true,
+        'show_in_rest'               => true,
+		'show_ui'                    => true,
 		'show_admin_column'          => true,
 		'show_in_nav_menus'          => true,
 		'show_tagcloud'              => true,
-		'query_var'                  => true,
-		'rewrite'                    => array('slug'=> 'garantie'),
+        'query_var'                  => true,
+        'rewrite'                    => array( 'slug' => 'garantie' ),
 	);
 	register_taxonomy( 'garantie', array( 'produits' ), $args_warranty );
 
-    // Register Taxonomy prix
+    // Register Taxonomy Prix
 	$labels_price = array(
 		'name'                       => _x( 'Prix', 'Taxonomy General Name', 'fimtheme' ),
-		'singular_name'              => _x( 'Prix', 'Taxonomy Singular Name', 'fimtheme' ),
+		'singular_name'              => _x( 'prix', 'Taxonomy Singular Name', 'fimtheme' ),
 		'menu_name'                  => __( 'Prix', 'fimtheme' ),
 		'all_items'                  => __( 'All Items', 'fimtheme' ),
 		'parent_item'                => __( 'Parent Item', 'fimtheme' ),
@@ -211,15 +211,16 @@ function item_taxonomy() {
 		'labels'                     => $labels_price,
 		'hierarchical'               => false,
 		'public'                     => true,
-		'show_in_rest'               => true,
-        'shop_ui'                    => true,
+        'show_in_rest'               => true,
+		'show_ui'                    => true,
 		'show_admin_column'          => true,
 		'show_in_nav_menus'          => true,
 		'show_tagcloud'              => true,
-		'query_var'                  => true,
-		'rewrite'                    => array('slug'=> 'prix'),
+        'query_var'                  => true,
+        'rewrite'                    => array( 'slug' => 'prix' ),
 	);
 	register_taxonomy( 'prix', array( 'produits' ), $args_price );
+
 }
 add_action( 'init', 'item_taxonomy', 10 );
 endif;

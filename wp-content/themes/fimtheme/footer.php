@@ -40,5 +40,11 @@
 	<!-- FOOTER END -->
 	
     <?php wp_footer(); ?>
+
+	<script type="text/javascript">
+        tarteaucitron.user.gtagUa = 'G-624QZ2TLQS';
+        tarteaucitron.user.gtagMore = function () { /* add here your optionnal gtag() */ };
+        (tarteaucitron.job = tarteaucitron.job || []).push('gtag');
+    </script>
 </body>
 </html>

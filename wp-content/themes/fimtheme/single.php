@@ -13,6 +13,11 @@ get_header();
 		<h1><?php the_title(); ?></h1>
 	</div>
 	<!-- IMG + H1 END -->
+    <?php
+    if ( function_exists('yoast_breadcrumb') ) {
+    yoast_breadcrumb( '<p id="breadcrumbs">','</p>' );
+    }
+    ?>
 	
     <!-- PAGE CONTENT -->
     <div class="container mt-5">

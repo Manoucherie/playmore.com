@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 5.6.x - Development - Administration package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2021-02-14 17:41:21+0000\n"
+"PO-Revision-Date: 2021-02-16 07:51:56+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -4786,7 +4786,7 @@ msgstr "Saisissez ici une adresse si vous <a href=\"%s\">souhaitez que la page d
 #. translators: %s: https://wordpress.org/about/privacy
 #: wp-admin/privacy.php:74
 msgid "We take privacy and transparency very seriously. To learn more about what data we collect, and how we use it, please visit <a href=\"%s\">WordPress.org/about/privacy</a>."
-msgstr "Nous prenons très au sérieux le respect de la vie privée et la transparence. Pour en savoir plus sur les données que nous collectons, et comment nous les utilisons, veuillez visiter <a href=\"%s\" hreflang=\"en\">WordPress.org/about/privacy</a>."
+msgstr "Nous prenons très au sérieux le respect de la vie privée et la transparence. Pour en savoir plus sur les données que nous collectons, et comment nous les utilisons, veuillez visiter <a href=\"%s\">notre politique de confidentialité</a>."
 
 #: wp-admin/freedoms.php:66 wp-admin/freedoms.php:118
 msgid "https://wordpress.org/about/license/"
@@ -4877,7 +4877,7 @@ msgstr "Lancer l’installation"
 
 #: wp-admin/privacy.php:75
 msgid "https://wordpress.org/about/privacy/"
-msgstr "https://wordpress.org/about/privacy/"
+msgstr "https://fr.wordpress.org/about/privacy/"
 
 #: wp-admin/press-this.php:80
 msgid "Press This is not available. Please contact your site administrator."

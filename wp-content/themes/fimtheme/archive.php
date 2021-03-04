@@ -1,6 +1,6 @@
 <?php
 /**
- * The archive page
+ * The template for displaying archive pages
  * 
  * @package WordPress
  * @subpackage FIM_THEME
@@ -10,19 +10,17 @@ get_header();
 ?>
     <!-- SUBMENU H1 -->
 	<div class="container-fluid p-0 mt-4 text-center submenu">
-		<h1><?php the_title(); ?></h1>
+		<h1>ARCHIVE</h1>
 	</div>
 	<!-- IMG + H1 END -->
 	
     <!-- PAGE CONTENT -->
     <div class="container mt-5">
         <div class="row justify-content-md-center">
-			<div class="col mb-4">
+            <div class="col mb-4">
             <?php
                 if ( have_posts() ) : while ( have_posts() ) : the_post(); 
 
-                    // the_post_thumbnail( 'medium_large', ['class' => 'img-fluid'] );
-                    // the_content();
                     the_title();
                     echo '<br>';
                     
@@ -34,7 +32,6 @@ get_header();
         </div>
     </div>
 	<!-- PAGE CONTENT END -->
-   
 <?php
     get_template_part('template-parts/content-banner');
 get_footer();
